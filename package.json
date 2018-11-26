@@ -1,0 +1,38 @@
+{
+  "name": "fcamp-news-api",
+  "version": "1.0.0",
+  "description": "To see click on [the link](https://shumastar.github.io/FCAMP-4/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shumastar/FCAMP-4.git"
+  },
+  "author": "Andrei Shumski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shumastar/FCAMP-4/issues"
+  },
+  "homepage": "https://github.com/shumastar/FCAMP-4#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "install": "^0.12.2",
+    "npm": "^6.4.1"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/polyfill": "^7.0.0",
+    "babelify": "^10.0.0",
+    "browserify": "^16.2.3",
+    "del": "^3.0.0",
+    "gulp-imagemin": "^5.0.3",
+    "vinyl-source-stream": "^2.0.0",
+    "whatwg-fetch": "^3.0.0"
+  }
+}
