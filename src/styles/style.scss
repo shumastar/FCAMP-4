@@ -1,8 +1,6 @@
-:root {
-  --bg-color: #f3f3f3d6;
-  --border-color: #e5e2e2d6;
-  --shadow: 1px -1px 8px 0px rgba(166, 161, 166, 0.63);
-}
+$bg-color: #f3f3f3d6;
+$border-color: #e5e2e2d6;
+$shadow: 1px -1px 8px 0px rgba(166, 161, 166, 0.63);
 
 html,
 body {
@@ -32,10 +30,10 @@ a:hover {
 .header_menu {
   width: 100%;
   border-radius: 20px;
-  border: solid 1px var(--border-color);
-  background-color: var(--bg-color);
+  border: solid 1px $border-color;
+  background-color: $bg-color;
   margin-top: 10px;
-  box-shadow: var(--shadow);
+  box-shadow: $shadow;
 }
 
 .menu_country-list {
@@ -65,7 +63,7 @@ a:hover {
   background-size: cover;
   border-radius: 20px;
   line-height: 200px;
-  box-shadow: var(--shadow);
+  box-shadow: $shadow;
 }
 
 .title {
@@ -77,12 +75,14 @@ a:hover {
 
 .news-container {
   width: 100%;
-  border: solid 1px var(--border-color);
+  border: solid 1px $border-color;
   margin-top: 10px;
   border-radius: 20px;
-  background-color: var(--bg-color);
-  box-shadow: var(--shadow);
+  background-color: $bg-color;
+  box-shadow: $shadow;
   flex: 1 0 auto;
+  position: relative;
+  min-height: 50px;
 }
 
 #news-list {
@@ -97,11 +97,11 @@ a:hover {
   display: flex;
   justify-content: space-between;
   padding: 20px;
-}
 
-.article:hover {
-  border: solid 1px var(--border-color);
-  box-shadow: var(--shadow);
+  &:hover {
+    border: solid 1px $border-color;
+    box-shadow: $shadow;
+  }
 }
 
 .article_image-container {
@@ -149,13 +149,38 @@ a:hover {
   width: 100%;
   height: 30px;
   flex: 0 0 auto;
-  border: solid 1px var(--border-color);
+  border: solid 1px $border-color;
   border-radius: 20px;
   margin: 10px 0;
   text-align: center;
   line-height: 30px;
-  background-color: var(--bg-color);
-  box-shadow: var(--shadow);
+  background-color: $bg-color;
+  box-shadow: $shadow;
+}
+
+.get-news-button {
+  display: block;
+  border-radius: 20px;
+  width: 200px;
+  background-color: $bg-color;
+  border: solid 1px $border-color;
+  cursor: pointer;
+  font-family: 'Courier New', Courier, monospace;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+
+  &:hover {
+    box-shadow: $shadow;
+    color: #6b6767d6;
+  }
+}
+
+.non-visible {
+  display: none;
 }
 
 @media(max-width: 320px) {

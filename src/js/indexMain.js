@@ -1,5 +1,8 @@
-import '@babel/polyfill';
-import 'whatwg-fetch';
+import 'babel-polyfill';
+import 'isomorphic-fetch';
+import './../styles/style.scss';
+import './../img/nofoto.jpeg';
+import './../img/favicon.ico';
 
 const apiKey = "85e168742c28431db328204ff1cfb6e8";
 const baseURL = "https://newsapi.org/v2/top-headlines?";
