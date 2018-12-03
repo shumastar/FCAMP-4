@@ -1,3 +1,5 @@
+import onLoad from '../Utils/loader';
+
 class News {
   constructor(apiKey, baseURL) {
     this.apiKey = apiKey;
@@ -9,9 +11,11 @@ class News {
   }
 
   async getData(country) {
+    onLoad(true);
     const url = this.getUrl(country);
     const response = await fetch(url);
     const data = await response.json();
+    onLoad(false);
     return data;
   }
 }

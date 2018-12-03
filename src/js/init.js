@@ -1,6 +1,10 @@
 import News from './Components/News';
 import showArticles from './Controllers/showArticles';
-import { apiKey, baseURL, renderNewsBtn } from './Utils/const';
+import {
+  apiKey,
+  baseURL,
+  renderNewsBtn,
+} from './Utils/const';
 import selectCountry from './Controllers/selectCountry';
 
 const news = new News(apiKey, baseURL);
