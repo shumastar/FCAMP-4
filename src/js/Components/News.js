@@ -1,4 +1,5 @@
 import onLoad from '../Utils/loader';
+import { errorHandler } from '../Utils/errorHandler';
 
 class News {
   constructor(apiKey, baseURL) {
@@ -11,13 +12,17 @@ class News {
   }
 
   async getData(country) {
-    onLoad(true);
-    const url = this.getUrl(country);
-    const response = await fetch(url);
-    const data = await response.json();
-    onLoad(false);
-    return data;
+    try {
+      onLoad(true);
+      const url = this.getUrl(country);
+      const response = await fetch(url);
+      const data = await response.json();
+      onLoad(false);
+      return data;
+    } catch(e) {
+      return errorHandler.getInstance().getError();
+    };
   }
 }
 
-export default News ;
+export default News;
