@@ -15,5 +15,5 @@ export const errorHandler = (() => {
 			return instance || (instance = createInstance());
 		}
 	}
-	
+
 })();
