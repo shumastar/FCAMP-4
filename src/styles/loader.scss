@@ -3,7 +3,7 @@
 .active_loader {
   width: 200px;
   height: 200px;
-  color: white;
+  color: #e5e2e2d6;
   margin: 0 auto;
   position: absolute;
   top: 50%;
@@ -18,7 +18,7 @@
 
 @-webkit-keyframes borderScale {
   0% {
-    border: 5px solid white;
+    border: 5px solid #e5e2e2d6;
   }
 
   50% {
@@ -26,13 +26,13 @@
   }
 
   100% {
-    border: 5px solid white;
+    border: 5px solid #e5e2e2d6;
   }
 }
 
 @keyframes borderScale {
   0% {
-    border: 5px solid white;
+    border: 5px solid #e5e2e2d6;
   }
 
   50% {
@@ -40,6 +40,6 @@
   }
 
   100% {
-    border: 5px solid white;
+    border: 5px solid #e5e2e2d6;
   }
 }

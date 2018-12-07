@@ -4,3 +4,5 @@ export const newsList = document.getElementById('news-list');
 export const renderNewsBtn = document.getElementById('get-news');
 export const searchInput = document.getElementById('search-input');
 export const searchButton = document.getElementById('search-button');
+export const countryList = document.getElementById('country-list');
+export const countries = ['us','au','gb','in','ar','br','ru','ua','no','de','ca','cu','be','pl','cz'];

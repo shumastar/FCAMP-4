@@ -9,6 +9,7 @@ import {
 } from './Utils/const';
 import selectCountry from './Controllers/selectCountry';
 import seachByKeyWord from './Controllers/searchByKeyWord';
+import showCountryList from './Components/CountryList';
 
 const news = newsWithLog(apiKey, baseURL);
 export default class RenderNews {
@@ -17,6 +18,7 @@ export default class RenderNews {
   }
 
   init() {
+    document.addEventListener('DOMContentLoaded', showCountryList());
     renderNewsBtn.addEventListener('click', () => news.getData('us').then(data => showArticles(data)));
     renderNewsBtn.addEventListener('click', () => renderNewsBtn.classList.add('non-visible'));
     document.addEventListener('click', event => selectCountry(news, event));
