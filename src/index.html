@@ -15,13 +15,13 @@
   <div class="container">
     <header class="header">
       <div class="header_menu">
-        <ul class="menu_country-list">
-          <li class="country-list_item"><a class="country-list_item__link" href="#" data-country="us">USA</a></li>
-          <li class="country-list_item"><a class="country-list_item__link" href="#" data-country="au">Ausralia</a></li>
-          <li class="country-list_item"><a class="country-list_item__link" href="#" data-country="gb">Great Britain</a></li>
-          <li class="country-list_item"><a class="country-list_item__link" href="#" data-country="in">India</a></li>
-          <li class="country-list_item"><a class="country-list_item__link" href="#" data-country="nz">New Zealand</a></li>
-        </ul>
+        <ul id="country-list" class="menu_country-list"></ul>
+        <div class="menu_search">
+          <input type="text" id="search-input" class="search_input" placeholder="Find your news">
+          <button id="search-button" class="search_button">
+            Search
+          </button>
+        </div>
       </div>
       <div class="header_title">
         <a href="#">

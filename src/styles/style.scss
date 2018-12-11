@@ -3,11 +3,14 @@
 $bg-color: #f3f3f3d6;
 $border-color: #e5e2e2d6;
 $shadow: 1px -1px 8px 0px rgba(166, 161, 166, 0.63);
+$primary-font: 'Courier New',
+Courier,
+monospace;
 
 html,
 body {
   height: 100%;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: $primary-font
 }
 
 a,
@@ -36,6 +39,8 @@ a:hover {
   background-color: $bg-color;
   margin-top: 10px;
   box-shadow: $shadow;
+  display: flex;
+  justify-content: space-between;
 }
 
 .menu_country-list {
@@ -44,8 +49,53 @@ a:hover {
   box-sizing: border-box;
 }
 
+.menu_search {
+  padding: 15px;
+  margin-right: 20px;
+}
+
+.search_input {
+  border-radius: 20px;
+  border: solid 1px $border-color;
+  background-color: $bg-color;
+  font-family: $primary-font;
+  width: 250px;
+  height: 30px;
+  text-align: center;
+
+  &:focus {
+    outline: 0;
+    box-shadow: $shadow;
+    color: #6b6767d6;
+  }
+
+  &:hover {
+    box-shadow: $shadow;
+    color: #6b6767d6;
+  }
+}
+
+.search_button {
+  border-radius: 20px;
+  border: solid 1px $border-color;
+  background-color: $bg-color;
+  font-family: $primary-font;
+  width: 80px;
+  height: 30px;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    box-shadow: $shadow;
+    color: #6b6767d6;
+    cursor: pointer;
+  }
+}
+
 .country-list_item {
-  margin: 0 20px;
+  margin: 0 10px;
   list-style-type: none;
   box-sizing: border-box;
   border-radius: 20px;
@@ -167,7 +217,7 @@ a:hover {
   background-color: $bg-color;
   border: solid 1px $border-color;
   cursor: pointer;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: $primary-font;
   height: 50px;
   position: absolute;
   top: 50%;
