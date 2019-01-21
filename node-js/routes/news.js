@@ -1,29 +1,67 @@
 const express = require('express');
+const news = require('../db/news');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send('News');
+router.get('/', function (req, res, next) {
+  const newsList = news.articles;
+
+  if (!Array.isArray(newsList)) {
+    return next('Something went wrong.');
+  }
+
+  res.send(newsList);
+});
+
+router.get('/:id', function (req, res, next) {
+  const articles = news.articles.find(news => news.id === req.params.id);
+
+  if (!articles) {
+    return next('Nothing was found');
+  }
+
+  res.send(articles);
+});
+
+router.post('/', function(req, res) {
+  const { id, name, url } = req.body;
+
+  if (!id || !name || !url) {
+    res.status(404).send('Required data: id, name, url');
+  }
+
+  news.articles.push({ ...req.body });
+
+  res.status(200).send('New article was successfully added');
+});
+
+router.put('/:id', function(req, res) {
+  const articles = news.articles.find(news => news.id === req.params.id);
+
+  if (!articles) {
+    res.next('No article was found');
+  }
+
+  news.articles = news.articles.map(news => {
+    if (news.id !== req.params.id) {
+      return news;
+    }
+
+    return { ...news, ...req.body };
   });
-  
-  router.get('/:id', (req, res) => {
-    res.send(`News ${req.params.id}`);
-  });
-  
-  router.post('/', (req, res) => {
-    const news = req.body;
-    data.push(news);
-    res.status(201).send('Added');
-  });
-  
-  router.put('/:id', (req, res) => {
-    const put_id = req.params.id;
-    const news = req.body;
-    res.send('Etided');
-  });
-  
-  router.delete('/:id', (req, res) => {
-    const del_id = req.params.id;
-    res.send(`Deleted ${req.params.id}`);
-  });
-  
-  module.exports = router;
+
+  res.status(200).send('Article was updated');
+});
+
+router.delete('/:id', function(req, res) {
+  const articles = news.articles.find(news => news.id === req.params.id);
+
+  if (!articles) {
+    res.next('Nothing to delete');
+  }
+
+  news.articles = news.articles.filter(news => news.id !== req.params.id);
+
+  res.status(200).send('Article was deleted');
+});
+
+module.exports = router;
