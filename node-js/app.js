@@ -7,6 +7,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('./logger/logger');
 const passport = require('passport');
 const BasicStrategy = require('passport-http').BasicStrategy;
+const BearerStrategy = require('passport-http-bearer').Strategy;
+const jwt = require('jsonwebtoken');
 const userController= require('./controllers/userController');
 
 const authRouter = require('./routes/auth');
@@ -27,6 +29,15 @@ passport.use(new BasicStrategy(
       .catch(err => cb(err));
   })
 );
+
+passport.use(new BearerStrategy(
+  function (token, done) {
+    jwt.verify(token, config.secret, (err, decoded) => {
+      if (err) { return done(err); }
+      return done(null, decoded, { scope: 'all' });
+    })
+  }
+));
 
 passport.serializeUser(async function (user, cb) {
   cb(null, user);
