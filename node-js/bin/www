@@ -7,6 +7,9 @@
 var app = require('../app');
 var debug = require('debug')('node-js:server');
 var http = require('http');
+const db = require('../db/database');
+
+db.connect('mongodb://localhost:27017/frontcamp');
 
 /**
  * Get port from environment and store in Express.

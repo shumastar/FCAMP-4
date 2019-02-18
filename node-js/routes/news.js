@@ -1,67 +1,76 @@
 const express = require('express');
-const news = require('../db/news');
 const router = express.Router();
+const newsController = require('../controllers/newsController');
+const passport = require('passport');
 
-router.get('/', function (req, res, next) {
-  const newsList = news.articles;
+router.get('/', async (req, res) => res.json(await newsController.getAll()));
 
-  if (!Array.isArray(newsList)) {
-    return next('Something went wrong.');
+router.get('/:id', async (req, res) => {
+  const result = await newsController.getById(req.params.id);
+  if (!result) {
+    req.next();
+    return;
   }
-
-  res.send(newsList);
+  res.json(result);
 });
 
-router.get('/:id', function (req, res, next) {
-  const articles = news.articles.find(news => news.id === req.params.id);
-
-  if (!articles) {
-    return next('Nothing was found');
+router.post('/',
+  passport.authenticate('bearer', { session: false }),
+  async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+    try {
+      await newsController.add(req.body);
+    } catch (err) {
+      next(err);
+    }
+    res.send();
   }
+);
 
-  res.send(articles);
-});
-
-router.post('/', function(req, res) {
-  const { id, name, url } = req.body;
-
-  if (!id || !name || !url) {
-    res.status(404).send('Required data: id, name, url');
-  }
-
-  news.articles.push({ ...req.body });
-
-  res.status(200).send('New article was successfully added');
-});
-
-router.put('/:id', function(req, res) {
-  const articles = news.articles.find(news => news.id === req.params.id);
-
-  if (!articles) {
-    res.next('No article was found');
-  }
-
-  news.articles = news.articles.map(news => {
-    if (news.id !== req.params.id) {
-      return news;
+router.put('/:id',
+  passport.authenticate('bearer', { session: false }),
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+    const id = req.params.id;
+    const newsToUpdate = await newsController.getById(id);
+    if (!newsToUpdate) {
+      req.next();
+      return;
     }
 
-    return { ...news, ...req.body };
+    try {
+      await newsController.update(id, req.body);
+    } catch (err) {
+      next(err);
+    }
+    res.send();
+  }
+);
+
+router.delete('/:id',
+  passport.authenticate('bearer', { session: false }),
+  async (req, res) => {
+    const id = req.params.id;
+    const newsToDelete = await newsController.getById(id);
+    if (!newsToDelete) {
+      req.next();
+      return;
+    }
+    await newsService.delete(id);
+    res.send();
   });
 
-  res.status(200).send('Article was updated');
-});
-
-router.delete('/:id', function(req, res) {
-  const articles = news.articles.find(news => news.id === req.params.id);
-
-  if (!articles) {
-    res.next('Nothing to delete');
-  }
-
-  news.articles = news.articles.filter(news => news.id !== req.params.id);
-
-  res.status(200).send('Article was deleted');
-});
+router.delete('/',
+  passport.authenticate('bearer', { session: false }),
+  async (req, res) => {
+    await newsController.deleteAll();
+    res.send();
+  });
 
 module.exports = router;
