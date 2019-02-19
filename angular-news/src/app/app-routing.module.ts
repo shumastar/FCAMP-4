@@ -4,7 +4,13 @@ import {
   RouterModule
 } from '@angular/router';
 
-const routes: Routes = [];
+import { HomePageComponent } from './layers/home/home.component';
+import { NotFoundPageComponent } from './layers/notFound/notFound.component';
+
+const routes: Routes = [
+  { path: '', component: HomePageComponent },
+  { path: '404', component: NotFoundPageComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
