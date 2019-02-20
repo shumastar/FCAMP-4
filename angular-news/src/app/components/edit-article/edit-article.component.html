@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div class="container">
+  <div>
+    <label for="author">Author</label>
+    <input type="text" id="author" name="author">
+  </div>
+  <div>
+    <label for="title">title</label>
+    <input type="text" id="title" name="title">
+  </div>
+  <div>
+    <label for="url">URL</label>
+    <input type="text" id="url" name="url">
+  </div>
+  <div>
+    <label for="description">description</label>
+    <textarea id="description" name="description" rows="5" cols="25"></textarea>
+  </div>
+  <div>
+    <label for="content">Content</label>
+    <textarea id="content" name="content" rows="5" cols="25"></textarea>
+  </div>
+
+  <div>
+    <button id="saveButton" (click)=saveArticle() routerLink="/">Save</button>
+    <button id="cancelButton" routerLink="/">Cancel</button>
+  </div>
+</div>
+<app-footer></app-footer>

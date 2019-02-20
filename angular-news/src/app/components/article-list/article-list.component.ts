@@ -2,6 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { mockData } from '../../utils/mockData';
 
 @Component({
   selector: 'app-article-list',
@@ -10,10 +11,16 @@ import {
 })
 
 export class ArticleListComponent implements OnInit {
+  public articles: Array<object> = mockData;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  deleteArticle(id: number): void {
+    confirm(`Do you really want to delete ${id} article`);
   }
 
 }

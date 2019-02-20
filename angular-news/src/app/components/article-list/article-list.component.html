@@ -1,1 +1,26 @@
-<div class="news-container">List of Articles</div>
+<div class="news-container">
+  <div>
+    <div *ngFor="let article of articles">
+      <div>
+        <img src="{{article.urlToImage}}">
+        <div>
+          <div>
+            <div>
+              {{article.title}}
+            </div>
+            <div>
+              {{article.publishedAt}}
+            </div>
+          </div>
+          <div>
+            {{article.description}}
+          </div>
+        </div>
+        <div>
+          <button id="editButton" routerLink="/{{article.id}}/edit">Edit</button>
+          <button id="deleteButton" (click)=deleteArticle(article.id)>Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

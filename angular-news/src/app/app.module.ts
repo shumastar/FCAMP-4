@@ -1,3 +1,4 @@
+import { EditArticleComponent } from './components/edit-article/edit-article.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
     AppComponent,
     HomePageComponent,
     NotFoundPageComponent,
+    EditArticleComponent,
     FooterComponent,
     HeaderComponent,
     ArticleListComponent,
