@@ -11,3 +11,54 @@
   position: relative;
   min-height: 50px;
 }
+
+.article {
+  border-radius: 20px;
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+
+  &:hover {
+    border: solid 1px $border-color;
+    box-shadow: $shadow;
+  }
+}
+
+.article_image-container {
+  width: 30%;
+  display: flex;
+  align-items: center;
+}
+
+.article_image {
+  width: 350px;
+  border-radius: 20px;
+}
+
+.article_info {
+  width: 60%;
+}
+
+.info_title {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.info_context {
+  font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info_link {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.info_date,
+.info_source-name {
+  font-size: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
