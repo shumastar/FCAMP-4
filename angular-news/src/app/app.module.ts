@@ -1,13 +1,16 @@
-import { EditArticleComponent } from './components/edit-article/edit-article.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ArticleListComponent } from './components/article-list/article-list.component';
+import { EditArticleComponent } from './components/edit-article/edit-article.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
 import { HomePageComponent } from './layers/home/home.component';
 import { NotFoundPageComponent } from './layers/notFound/notFound.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { ArticleListComponent } from './components/article-list/article-list.component';
-import { HeaderComponent } from './components/header/header.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -18,10 +21,12 @@ import { HeaderComponent } from './components/header/header.component';
     FooterComponent,
     HeaderComponent,
     ArticleListComponent,
+    FilterPipe,
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

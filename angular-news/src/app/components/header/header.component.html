@@ -5,27 +5,29 @@
   </div>
 
   <div>
-    Source
+    {{source}}
   </div>
 
   <div>
     <div>
-      <select>
-        <option>USA</option>
-        <option>RUS</option>
-        <option>GB</option>
+      <select (change)=changeChanell() id="chanelSelect">
+        <option value="ar" selected>Argentina</option>
+        <option value="us">USA</option>
+        <option value="ua">Ukraine</option>
+        <option value="cn">China</option>
+        <option value="ru">Russia</option>
       </select>
     </div>
 
     <div class="menu_search">
-      <input type="text" id="search-input" class="search_input" placeholder="Find your news">
-      <button id="search-button" class="search_button">
+      <input type="text" id="search-input" class="search_input" placeholder="Find your news" #filterInput>
+      <button id="search-button" class="search_button" (click)=applyFilter(filterInput.value)>
         Search
       </button>
     </div>
 
     <div>
-      <input type="checkbox" name="users-articles">
+      <input type="checkbox" name="users-articles" (click)=changeOnlyMy() id="only-my">
       <label for="users-articles">Only created by me</label>
     </div>
 
