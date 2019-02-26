@@ -1,0 +1,23 @@
+<div *ngFor="let article of articles | filter: filter" class="article">
+  <section class="article_image-container">
+    <img class="article_image" src="{{article.urlToImage}}">
+  </section>
+  <div class="article_info">
+    <div class="info_source-name">{{article.source.name}}</div>
+    <div class="info_date"> {{article.publishedAt}}</div>
+    <h3 class="info_title">{{article.title}}</h3>
+    <p class="info_context">
+      {{article.content}}
+    </p>
+    <a class="info_link" href="{{article.url}" target="_blank">
+      Read More
+    </a>
+    <div *ngIf="isAction">
+      <button id="editButton" routerLink="/{{article._id}}/edit">Edit</button>
+      <button id="deleteButton" (click)=deleteArticle(article._id)>Delete</button>
+    </div>
+  </div>
+</div>
+
+<div id="load-more" (click)=loadMore() *ngIf="!isAction">Load more</div>
+

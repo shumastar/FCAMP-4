@@ -1,0 +1,13 @@
+@import '../../utils/styles-constants.scss';
+
+.container {
+  width: 100%;
+  border: solid 1px $border-color;
+  margin-top: 10px;
+  border-radius: 20px;
+  background-color: $bg-color;
+  box-shadow: $shadow;
+  flex: 1 0 auto;
+  position: relative;
+  min-height: 50px;
+}

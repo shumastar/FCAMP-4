@@ -1,0 +1,12 @@
+@import '../../utils/styles-constants.scss';
+
+.header_menu {
+  width: 100%;
+  border-radius: 20px;
+  border: solid 1px $border-color;
+  background-color: $bg-color;
+  margin-top: 10px;
+  box-shadow: $shadow;
+  display: flex;
+  justify-content: space-between;
+}
